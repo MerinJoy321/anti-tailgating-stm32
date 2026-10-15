@@ -1,0 +1,14 @@
+# Build artifacts
+build/
+*.exe
+*.o
+*.elf
+*.bin
+*.map
+
+# Python / IDE
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+.pio/

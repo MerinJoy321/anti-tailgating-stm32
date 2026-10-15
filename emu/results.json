@@ -1,0 +1,1070 @@
+[
+ [
+  "boot",
+  "banner prints rc522=ok, ver, sysclk=72 MHz",
+  true,
+  "['BOOT,TrustGate,1.0.0,rc522=ok,ver=0x92,sysclk=72000000']"
+ ],
+ [
+  "boot",
+  "boot event reports power-on reset (cause 3)",
+  true,
+  "[{'t': 0.0769867373737376, 'seq': 0, 'tick': 65, 'name': 'BOOT', 'user': -1, 'uid': '00000000', 'arg': 3}]"
+ ],
+ [
+  "boot",
+  "firmware asks the dashboard for time (TIME?)",
+  true,
+  ""
+ ],
+ [
+  "boot",
+  "RCC: SYSCLK 72 MHz, APB1 36 MHz (<=36), APB2 72 MHz",
+  true,
+  "(72000000, (36000000, 2), (72000000, 1))"
+ ],
+ [
+  "boot",
+  "FLASH latency = 2 wait states at 72 MHz, prefetch on",
+  true,
+  "(2, 1)"
+ ],
+ [
+  "boot",
+  "servo pin PA1 carries 50 Hz PWM (period 20 ms)",
+  true,
+  "{'period': 0.02, 'pulse': 0.0007, 'pol': 0, 'ocm': 6}"
+ ],
+ [
+  "boot",
+  "servo boots in the LOCKED position (pulse 0.7 ms)",
+  true,
+  "{'period': 0.02, 'pulse': 0.0007, 'pol': 0, 'ocm': 6}"
+ ],
+ [
+  "boot",
+  "UART: BRR gives 115200 baud within 1 %",
+  true,
+  "115200 baud"
+ ],
+ [
+  "boot",
+  "SysTick prio 15, USART1 prio 1, 4 preempt bits (BASEPRI scheme valid)",
+  true,
+  "(240, 16, 3)"
+ ],
+ [
+  "boot",
+  "SysTick ticks at 1 kHz (HAL tick tracks real time)",
+  true,
+  "(1076, 1080)"
+ ],
+ [
+  "boot",
+  "IWDG running, timeout ~1 s at LSI 40 kHz",
+  true,
+  "1.001 s"
+ ],
+ [
+  "boot",
+  "status says door LOCKED, 0 inside, no alarm",
+  true,
+  "[(1.0795675505050697, {'tick': 1076, 'door': 'L', 'grant': 0, 'inside': 0, 'lock': 0, 'alarm': 0, 'tv': 0, 'admin': 0, 'ir': '00', 'tamper': 0})]"
+ ],
+ [
+  "boot",
+  "RAM budget on a 10 KB part: 2208 B static + 984 B peak stack of 10240 B",
+  true,
+  "free 7048 B"
+ ],
+ [
+  "boot",
+  "only the power-on reset happened (no watchdog)",
+  true,
+  "[(0.0, 'por')]"
+ ],
+ [
+  "boot",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "boot",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "boot",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "reader",
+  "unknown card held 3 s -> exactly ONE ACCESS_DENIED with its UID",
+  true,
+  "[{'t': 0.2020645606060605, 'seq': 2, 'tick': 196, 'name': 'ACCESS_DENIED', 'user': -1, 'uid': '11223344', 'arg': 1}]"
+ ],
+ [
+  "reader",
+  "door stays locked",
+  true,
+  ""
+ ],
+ [
+  "reader",
+  "card removed and presented again -> a second tap is counted",
+  true,
+  "['ACCESS_DENIED', 'ACCESS_DENIED']"
+ ],
+ [
+  "reader",
+  "third fail inside 30 s -> LOCKOUT_START",
+  true,
+  "['ACCESS_DENIED', 'ACCESS_DENIED', 'ACCESS_DENIED', 'LOCKOUT_START']"
+ ],
+ [
+  "reader",
+  "7-byte UID card: no access event, no lockout, no crash",
+  true,
+  "['BOOT', 'TIME_SET']"
+ ],
+ [
+  "reader",
+  "... and the firmware warns about the unsupported card",
+  true,
+  "['OK TIME', 'WARN,UNREADABLE_OR_UNSUPPORTED_CARD']"
+ ],
+ [
+  "reader",
+  "two cards in the field: collision, no access granted",
+  true,
+  "['BOOT', 'TIME_SET']"
+ ],
+ [
+  "reader",
+  "one card removed: remaining card is read normally",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED']"
+ ],
+ [
+  "reader",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "reader",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "reader",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "entry_exit",
+  "staff tap -> ACCESS_GRANTED, passage -> ENTRY_OK (in that order)",
+  true,
+  "['ACCESS_GRANTED', 'ENTRY_OK']"
+ ],
+ [
+  "entry_exit",
+  "grant direction learned as 'any' after reset (arg 2)",
+  true,
+  "{'t': 0.20206488383838372, 'seq': 2, 'tick': 196, 'name': 'ACCESS_GRANTED', 'user': 1, 'uid': 'DEADBE02', 'arg': 2}"
+ ],
+ [
+  "entry_exit",
+  "servo physically unlocks after the tap (latency 71 ms)",
+  true,
+  "71 ms"
+ ],
+ [
+  "entry_exit",
+  "servo relocks 1.2 s after the passage is confirmed (ENTRY_OK)",
+  true,
+  "1.20 s after ENTRY_OK"
+ ],
+ [
+  "entry_exit",
+  "status: 1 person inside, door locked, no alarm",
+  true,
+  "{'tick': 3076, 'door': 'L', 'grant': 0, 'inside': 1, 'lock': 0, 'alarm': 0, 'tv': 1, 'admin': 0, 'ir': '00', 'tamper': 0}"
+ ],
+ [
+  "entry_exit",
+  "no alarm / buzzer alarm pattern during a legitimate entry",
+  true,
+  ""
+ ],
+ [
+  "entry_exit",
+  "same card again -> grant 'OUT' (arg 1) -> EXIT_OK",
+  true,
+  "['ACCESS_GRANTED', 'EXIT_OK']"
+ ],
+ [
+  "entry_exit",
+  "status: 0 inside after the exit",
+  true,
+  "{'tick': 6076, 'door': 'L', 'grant': 0, 'inside': 0, 'lock': 0, 'alarm': 0, 'tv': 1, 'admin': 0, 'ir': '00', 'tamper': 0}"
+ ],
+ [
+  "entry_exit",
+  "door was never open without a tap: open intervals == 2",
+  true,
+  "[(0.21, 2.01), (3.61, 5.47)]"
+ ],
+ [
+  "entry_exit",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "entry_exit",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "entry_exit",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "tailgate",
+  "second person 0.7 s behind -> TAILGATE event",
+  true,
+  "['ACCESS_GRANTED', 'ENTRY_OK', 'TAILGATE']"
+ ],
+ [
+  "tailgate",
+  "door relocked right after the tailgate",
+  true,
+  "1.9661299393939744"
+ ],
+ [
+  "tailgate",
+  "buzzer toggles during the alarm (>=6 transitions)",
+  true,
+  "7"
+ ],
+ [
+  "tailgate",
+  "alarm shows in the 1 Hz status for ~6 s (6 reports), then clears by itself",
+  true,
+  "[(2.1, 1), (3.1, 1), (4.1, 1), (5.1, 1), (6.1, 1), (7.1, 1), (8.1, 0), (9.1, 0), (10.1, 0)]"
+ ],
+ [
+  "tailgate",
+  "walk-through with no tap -> UNAUTH_PASSAGE",
+  true,
+  "['UNAUTH_PASSAGE']"
+ ],
+ [
+  "tailgate",
+  "... and the door never opened for it",
+  true,
+  "1"
+ ],
+ [
+  "tailgate",
+  "follower 3.5 s later (outside the tailgate window) -> UNAUTH_PASSAGE",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'ENTRY_OK', 'UNAUTH_PASSAGE']"
+ ],
+ [
+  "tailgate",
+  "follower gap sweep (ms after first person clears; negative = beams overlap): {-120: 'merged', 100: 'TAILGATE', 250: 'TAILGATE', 400: 'TAILGATE', 600: 'TAILGATE', 1000: 'TAILGATE'}",
+  true,
+  "{-120: 'merged', 100: 'TAILGATE', 250: 'TAILGATE', 400: 'TAILGATE', 600: 'TAILGATE', 1000: 'TAILGATE'}"
+ ],
+ [
+  "tailgate",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "tailgate",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "tailgate",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "passback",
+  "inside user's card used to enter again -> ANTIPASSBACK",
+  true,
+  "['ACCESS_GRANTED', 'ANTIPASSBACK']"
+ ],
+ [
+  "passback",
+  "outside user's tap + someone walking OUT -> DIR_MISMATCH",
+  true,
+  "['ACCESS_GRANTED', 'DIR_MISMATCH']"
+ ],
+ [
+  "passback",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "passback",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "passback",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "policy",
+  "3 unknown cards in 30 s -> LOCKOUT_START (30 s)",
+  true,
+  "['ACCESS_DENIED', 'ACCESS_DENIED', 'ACCESS_DENIED', 'LOCKOUT_START']"
+ ],
+ [
+  "policy",
+  "valid staff card during lockout -> denied (LOCKOUT)",
+  true,
+  "[{'t': 5.282564330808275, 'seq': 6, 'tick': 5276, 'name': 'ACCESS_DENIED', 'user': 1, 'uid': 'DEADBE02', 'arg': 5}]"
+ ],
+ [
+  "policy",
+  "admin card ends the lockout and opens an admin session",
+  true,
+  "['LOCKOUT_END', 'ADMIN_SESSION', 'ACCESS_GRANTED']"
+ ],
+ [
+  "policy",
+  "lockout ends by itself after 30 s",
+  true,
+  "['LOCKOUT_END']"
+ ],
+ [
+  "policy",
+  "... and the staff card works again",
+  true,
+  "['ACCESS_GRANTED']"
+ ],
+ [
+  "policy",
+  "second tap while a grant is pending -> BUSY, not counted as a failure",
+  true,
+  "[{'t': 1.162064843434354, 'seq': 3, 'tick': 1156, 'name': 'ACCESS_DENIED', 'user': 2, 'uid': 'DEADBE03', 'arg': 6}]"
+ ],
+ [
+  "policy",
+  "tap but nobody walks: GRANT_TIMEOUT after ~6 s and door relocks, no alarm",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'GRANT_TIMEOUT']"
+ ],
+ [
+  "policy",
+  "... door was open ~6 s, not longer",
+  true,
+  "[(0.21, 6.21)]"
+ ],
+ [
+  "policy",
+  "staff on Saturday -> denied (time window)",
+  true,
+  "[{'t': 0.20197807828282813, 'seq': 2, 'tick': 196, 'name': 'ACCESS_DENIED', 'user': 1, 'uid': 'DEADBE02', 'arg': 3}]"
+ ],
+ [
+  "policy",
+  "staff at 07:59 Wed -> denied (time window)",
+  true,
+  "[{'t': 0.20197775505050497, 'seq': 2, 'tick': 196, 'name': 'ACCESS_DENIED', 'user': 1, 'uid': 'DEADBE02', 'arg': 3}]"
+ ],
+ [
+  "policy",
+  "guest at 09:00 Wed -> denied (time window)",
+  true,
+  "[{'t': 0.2019779974747473, 'seq': 2, 'tick': 196, 'name': 'ACCESS_DENIED', 'user': 3, 'uid': 'DEADBE04', 'arg': 3}]"
+ ],
+ [
+  "policy",
+  "clock rolls over 08:00 -> staff now granted",
+  true,
+  "['ACCESS_GRANTED']"
+ ],
+ [
+  "policy",
+  "admin works any time (Saturday)",
+  true,
+  "['ADMIN_SESSION', 'ACCESS_GRANTED']"
+ ],
+ [
+  "policy",
+  "clock never synced -> staff denied (UNSYNCED_CLOCK)",
+  true,
+  "[{'t': 0.1412732500000002, 'seq': 1, 'tick': 135, 'name': 'ACCESS_DENIED', 'user': 1, 'uid': 'DEADBE02', 'arg': 4}]"
+ ],
+ [
+  "policy",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "policy",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "policy",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "api",
+  "ACK / UNLOCKOUT / CAL refused without an admin session (violations logged, rate-limited)",
+  true,
+  "(['ERR need admin session'], ['ERR need admin session'], ['ERR CAL refused'], ['API_VIOLATION'])"
+ ],
+ [
+  "api",
+  "the refused CAL did not move the servo",
+  true,
+  "0.0007"
+ ],
+ [
+  "api",
+  "admin card opens a session (ADMIN_SESSION)",
+  true,
+  "['BOOT', 'TIME_SET', 'API_VIOLATION', 'ADMIN_SESSION', 'ACCESS_GRANTED']"
+ ],
+ [
+  "api",
+  "CAL accepted in an admin session",
+  true,
+  "['OK CAL']"
+ ],
+ [
+  "api",
+  "new lock position reaches the servo pin (900 us)",
+  true,
+  "0.0009"
+ ],
+ [
+  "api",
+  "TIME refused once the clock is synced and no admin session is open",
+  true,
+  "['ERR TIME refused']"
+ ],
+ [
+  "api",
+  "PROBE: secure boundary refuses the call",
+  true,
+  "['OK PROBE refused by secure boundary']"
+ ],
+ [
+  "api",
+  "production build has NO attack commands (ATTACK -> unknown command)",
+  true,
+  "['ERR unknown command']"
+ ],
+ [
+  "api",
+  "STATUS answers in the documented format",
+  true,
+  "[]"
+ ],
+ [
+  "api",
+  "ATTACK 1 (naive tamper) is detected -> TAMPER event, door stays locked",
+  true,
+  "(['OK ATTACK forged door_unlocked without re-sealing (expect TAMPER + lockdown)'], ['TAMPER'])"
+ ],
+ [
+  "api",
+  "ATTACK 3 (direct servo write) is detected -> TAMPER event, door stays locked",
+  true,
+  "(['OK ATTACK wrote TIM2->CCR2 directly (expect TAMPER arg=2, register restored)'], ['TAMPER'])"
+ ],
+ [
+  "api",
+  "ATTACK 2 (forged unlock with recomputed seal) opens silently -- documented limit",
+  true,
+  "(['OK ATTACK forged door_unlocked AND re-sealed (expect: door opens, NO event)'], [], True)"
+ ],
+ [
+  "api",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "api",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "api",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "uart",
+  "150 PING commands at 50/s while events print (+ one 200-char junk line) -> 150 replies",
+  true,
+  "150"
+ ],
+ [
+  "uart",
+  "... while a card event was being printed",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED']"
+ ],
+ [
+  "uart",
+  "no USART overrun (ORE) left pending",
+  true,
+  ""
+ ],
+ [
+  "uart",
+  "event sequence numbers contiguous",
+  true,
+  "[0, 1, 2]"
+ ],
+ [
+  "uart",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "uart",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "uart",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "ir",
+  "40 glitches of 8 ms (< 20 ms debounce) -> no event, door locked",
+  true,
+  "[]"
+ ],
+ [
+  "ir",
+  "sensor recovers: normal entry works afterwards",
+  true,
+  "['ACCESS_GRANTED', 'ENTRY_OK']"
+ ],
+ [
+  "ir",
+  "beam stuck blocked > 30 s -> SENSOR_STUCK warning",
+  true,
+  "['SENSOR_STUCK']"
+ ],
+ [
+  "ir",
+  "... and the system works again once the beam is freed",
+  true,
+  "['ACCESS_GRANTED', 'ENTRY_OK']"
+ ],
+ [
+  "ir",
+  "beams blocked > 1.5 s -> GROUP_SUSPECT warning",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'ENTRY_OK', 'GROUP_SUSPECT']"
+ ],
+ [
+  "ir",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "ir",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "ir",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "reset",
+  "person is inside before the crash",
+  true,
+  "{'tick': 3076, 'door': 'L', 'grant': 0, 'inside': 1, 'lock': 0, 'alarm': 0, 'tv': 1, 'admin': 0, 'ir': '00', 'tamper': 0}"
+ ],
+ [
+  "reset",
+  "watchdog resets a hung main loop",
+  true,
+  "[(0.0, 'por'), (4.585055030303053, 'iwdg')]"
+ ],
+ [
+  "reset",
+  "... within ~1 s of the hang (1.00 s)",
+  true,
+  "[4.585055030303053]"
+ ],
+ [
+  "reset",
+  "boot event carries reset cause 1 (watchdog)",
+  true,
+  "[{'t': 0.07691032828282851, 'seq': 0, 'tick': 65, 'name': 'BOOT', 'user': -1, 'uid': '00000000', 'arg': 3}, {'t': 4.663407631313185, 'seq': 0, 'tick': 65, 'name': 'BOOT', 'user': -1, 'uid': '00000000', 'arg': 1}]"
+ ],
+ [
+  "reset",
+  "door is locked again after the reset",
+  true,
+  "0.0007"
+ ],
+ [
+  "reset",
+  "first exit after the reset is accepted (side 'unknown'), NO false alarm",
+  true,
+  "['ACCESS_GRANTED', 'EXIT_OK']"
+ ],
+ [
+  "reset",
+  "watchdog also recovers a total freeze (PRIMASK set)",
+  true,
+  "[(0.0, 'por'), (1.1350554343434949, 'iwdg')]"
+ ],
+ [
+  "reset",
+  "power cycle while unlocked: boots LOCKED (was open: True)",
+  true,
+  "0.0007"
+ ],
+ [
+  "reset",
+  "NRST button -> boot cause 2",
+  true,
+  "{'t': 2.513331833333371, 'seq': 0, 'tick': 65, 'name': 'BOOT', 'user': -1, 'uid': '00000000', 'arg': 2}"
+ ],
+ [
+  "reset",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "reset",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "reset",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "hw_variants",
+  "no RC522 wired: banner says rc522=FAIL, firmware keeps running",
+  true,
+  "['']"
+ ],
+ [
+  "hw_variants",
+  "... and still detects an unauthorised passage",
+  true,
+  "['UNAUTH_PASSAGE']"
+ ],
+ [
+  "hw_variants",
+  "clone RC522 version byte 0x88 accepted and reads cards",
+  true,
+  "['BOOT,TrustGate,1.0.0,rc522=ok,ver=0x88,sysclk=72000000']"
+ ],
+ [
+  "hw_variants",
+  "clone RC522 version byte 0x12 accepted and reads cards",
+  true,
+  "['BOOT,TrustGate,1.0.0,rc522=ok,ver=0x12,sysclk=72000000']"
+ ],
+ [
+  "hw_variants",
+  "clone RC522 version byte 0x91 accepted and reads cards",
+  true,
+  "['BOOT,TrustGate,1.0.0,rc522=ok,ver=0x91,sysclk=72000000']"
+ ],
+ [
+  "hw_variants",
+  "RC522 reading 0x00 (miswired) -> rc522=FAIL",
+  true,
+  "['BOOT,TrustGate,1.0.0,rc522=FAIL,ver=0x00,sysclk=72000000']"
+ ],
+ [
+  "hw_variants",
+  "RC522 reading 0xFF (miswired) -> rc522=FAIL",
+  true,
+  "['BOOT,TrustGate,1.0.0,rc522=FAIL,ver=0xFF,sysclk=72000000']"
+ ],
+ [
+  "hw_variants",
+  "slow RC522 oscillator start-up (45 ms) still initialises",
+  true,
+  "['BOOT,TrustGate,1.0.0,rc522=ok,ver=0x92,sysclk=72000000']"
+ ],
+ [
+  "hw_variants",
+  "crystal dead: falls back to 8 MHz HSI and says so",
+  true,
+  "['BOOT,TrustGate,1.0.0,rc522=ok,ver=0x92,sysclk=8000000']"
+ ],
+ [
+  "hw_variants",
+  "... UART baud still within 3 % and a full entry works at 8 MHz",
+  true,
+  "(115942, ['ACCESS_GRANTED', 'ENTRY_OK'])"
+ ],
+ [
+  "hw_variants",
+  "... servo PWM still 20 ms period at 8 MHz",
+  true,
+  "{'period': 0.02, 'pulse': 0.0007, 'pol': 0, 'ocm': 6}"
+ ],
+ [
+  "hw_variants",
+  "LSI 30 kHz: watchdog never trips; min margin 1.33 s",
+  true,
+  "[(0.0, 'por')]"
+ ],
+ [
+  "hw_variants",
+  "LSI 60 kHz: watchdog never trips; min margin 0.67 s",
+  true,
+  "[(0.0, 'por')]"
+ ],
+ [
+  "hw_variants",
+  "with the real 10 ms RC522 timeout (no emulator shortcut): entry works",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'ENTRY_OK']"
+ ],
+ [
+  "hw_variants",
+  "35 % of RC522 frames lost: every presentation still yields exactly one grant (3/3)",
+  true,
+  "['ACCESS_GRANTED', 'ENTRY_OK', 'ACCESS_GRANTED', 'ENTRY_OK', 'ACCESS_GRANTED', 'ENTRY_OK']"
+ ],
+ [
+  "hw_variants",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "hw_variants",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "hw_variants",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "recovery",
+  "reader works before the glitch",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'ENTRY_OK']"
+ ],
+ [
+  "recovery",
+  "RC522 reset by a supply glitch: reader recovers by itself (card works 4 s later)",
+  true,
+  "['ACCESS_GRANTED']"
+ ],
+ [
+  "recovery",
+  "RC522 not answering at boot: banner says FAIL",
+  true,
+  ""
+ ],
+ [
+  "recovery",
+  "RC522 wire fixed after boot: reader comes up without a power cycle",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED']"
+ ],
+ [
+  "recovery",
+  "... and the firmware reports RC522_RECOVERED",
+  true,
+  "['OK TIME', 'WARN,RC522_RECOVERED', 'SX,1,1,0,0,0,0,0,0,0,0,0,0,0,0,860,860']"
+ ],
+ [
+  "recovery",
+  "RC522 permanently absent: status keeps its 1 Hz cadence (max gap 1.05 s), no watchdog reset, no warning spam",
+  true,
+  "(1.0537504242424554, [(0.0, 'por')])"
+ ],
+ [
+  "recovery",
+  "... still detects an unauthorised passage",
+  true,
+  "['BOOT', 'TIME_SET', 'UNAUTH_PASSAGE']"
+ ],
+ [
+  "recovery",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "recovery",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "recovery",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "people",
+  "45 legitimate passages with random speed/body width: 45 clean, no false alarm",
+  true,
+  "[]"
+ ],
+ [
+  "people",
+  "people counter equals the number the test left inside (3)",
+  true,
+  "{'tick': 225088, 'door': 'L', 'grant': 0, 'inside': 3, 'lock': 0, 'alarm': 0, 'tv': 1, 'admin': 0, 'ir': '00', 'tamper': 0}"
+ ],
+ [
+  "people",
+  "slow walker caught by the 6 s expiry is still let through (ENTRY_OK, no alarm)",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'ENTRY_OK']"
+ ],
+ [
+  "people",
+  "walker 1.5 s AFTER the grant expired -> GRANT_TIMEOUT then UNAUTH_PASSAGE",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'GRANT_TIMEOUT', 'UNAUTH_PASSAGE']"
+ ],
+ [
+  "people",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "people",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "people",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "reset_storm",
+  "30 random resets (many in the middle of RC522 init): next boot is clean",
+  true,
+  "['SX,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0', 'TIME?']"
+ ],
+ [
+  "reset_storm",
+  "... and a full entry works afterwards",
+  true,
+  "['ACCESS_GRANTED', 'ENTRY_OK']"
+ ],
+ [
+  "reset_storm",
+  "no faults, door locked",
+  true,
+  "([], [])"
+ ],
+ [
+  "bigger_chip",
+  "same binary on a 64 KB-flash / 20 KB-RAM clone (C8/CB): entry works",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'ENTRY_OK']"
+ ],
+ [
+  "bigger_chip",
+  "same binary on a 128 KB-flash / 20 KB-RAM clone (C8/CB): entry works",
+  true,
+  "['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'ENTRY_OK']"
+ ],
+ [
+  "soak",
+  "soak 150 s sim: 15 actions, 14 grants, 2 alarms",
+  true,
+  ""
+ ],
+ [
+  "soak",
+  "INVARIANT door open only after a grant, never longer than 6.0 s (limit 12)",
+  true,
+  "[]"
+ ],
+ [
+  "soak",
+  "INVARIANT no watchdog reset, no fault, no stack imbalance",
+  true,
+  "([(0.0, 'por')], [], [])"
+ ],
+ [
+  "soak",
+  "INVARIANT event log has no gaps",
+  true,
+  "[0, 1, 2, 3, 4]"
+ ],
+ [
+  "soak",
+  "peak stack 1016 B of 7520 B free RAM (>= 2x headroom)",
+  true,
+  "1016"
+ ],
+ [
+  "soak",
+  "status block still sane at the end",
+  true,
+  "{'tick': 168081, 'door': 'L', 'grant': 0, 'inside': 2, 'lock': 0, 'alarm': 0, 'tv': 1, 'admin': 0, 'ir': '00', 'tamper': 0}"
+ ],
+ [
+  "soak",
+  "no faults/errors",
+  true,
+  "[]"
+ ],
+ [
+  "soak",
+  "no clock-off / wiring / SPI-mode warnings",
+  true,
+  "[]"
+ ],
+ [
+  "soak",
+  "no unmodelled register accesses",
+  true,
+  "{}"
+ ],
+ [
+  "dashboard_e2e",
+  "dashboard connects to the board over the (virtual) serial port and syncs the clock",
+  true,
+  "(200, True, ['BOOT', 'TIME_SET'])"
+ ],
+ [
+  "dashboard_e2e",
+  "web UI state lists every device event, in order (13 events)",
+  true,
+  "(['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'ENTRY_OK', 'ACCESS_GRANTED', 'ENTRY_OK', 'TAILGATE', 'ACCESS_DENIED', 'ACCESS_DENIED', 'ACCESS_DENIED', 'LOCKOUT_START', 'BOOT', 'TIME_SET'], ['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'ENTRY_OK', 'ACCESS_GRANTED', 'ENTRY_OK', 'TAILGATE', 'ACCESS_DENIED', 'ACCESS_DENIED', 'ACCESS_DENIED', 'LOCKOUT_START', 'BOOT', 'TIME_SET'])"
+ ],
+ [
+  "dashboard_e2e",
+  "status + statistics blocks arrive and parse (taps=5, tailgates=1)",
+  true,
+  "{'tick': 31076, 'door': 'L', 'grant': 0, 'inside': 2, 'lockout_s': 24, 'alarm': 1, 'time_valid': 1, 'admin_s': 0, 'ir1': 0, 'ir2': 0, 'tamper_lockdown': 0}"
+ ],
+ [
+  "dashboard_e2e",
+  "clean start: events before the first tap are exactly BOOT, TIME_SET (no false API_VIOLATION push)",
+  true,
+  "(['BOOT', 'TIME_SET', 'ACCESS_GRANTED', 'ENTRY_OK'], ['TrustGate: TAILGATE', 'TrustGate: LOCKOUT_START', 'TrustGate: BOOT'])"
+ ],
+ [
+  "dashboard_e2e",
+  "phone push fired for TAILGATE (urgent) and LOCKOUT_START (high)",
+  true,
+  "[('TrustGate: TAILGATE', 'urgent'), ('TrustGate: LOCKOUT_START', 'high'), ('TrustGate: BOOT', 'high')]"
+ ],
+ [
+  "dashboard_e2e",
+  "watchdog reset reaches the phone (BOOT, high) and the clock is re-synced without a false violation",
+  true,
+  "(['TIME_SET', 'BOOT', 'LOCKOUT_START'], [('TrustGate: BOOT', 'high', 'WATCHDOG RESET: firmware hung or faulted')])"
+ ],
+ [
+  "dashboard_e2e",
+  "exactly 3 pushes, none for routine events (grants, entries, plain denials)",
+  true,
+  "['TrustGate: TAILGATE', 'TrustGate: LOCKOUT_START', 'TrustGate: BOOT']"
+ ],
+ [
+  "dashboard_e2e",
+  "push text carries the plain-language reason",
+  true,
+  "['second person followed Staff B (in)', 'lockout for 30 s after repeated failures', 'WATCHDOG RESET: firmware hung or faulted']"
+ ],
+ [
+  "dashboard_e2e",
+  "web command whitelist: STATS/PING accepted (200), CAL / ATTACK refused (403)",
+  true,
+  "(200, 200, 403, 403)"
+ ],
+ [
+  "dashboard_e2e",
+  "dashboard reports pushes sent = 3",
+  true,
+  "3"
+ ],
+ [
+  "dashboard_e2e",
+  "CSV log has one row per event (13 rows)",
+  true,
+  "13"
+ ],
+ [
+  "dashboard_e2e",
+  "both ends agree on the byte stream: dashboard saw no garbled lines",
+  true,
+  "None"
+ ],
+ [
+  "dashboard_e2e",
+  "dashboard log has no traceback",
+  true,
+  ": TAILGATE - second person followed Staff B (in)\n[push:high] TrustGate: LOCKOUT_START - lockout for 30 s after repeated failures\n[push:high] TrustGate: BOOT - WATCHDOG RESET: firmware hung or faulted\n"
+ ],
+ [
+  "dashboard_e2e",
+  "device-side faults during the run: none",
+  true,
+  "([], [])"
+ ]
+]

@@ -55,14 +55,16 @@ dirs:
 flash: build/trustgate.bin
 	stm32flash -w build/trustgate.bin -v -g 0x0 $(PORT)
 
+HOST_CC ?= clang
+
 # Host unit tests of the secure core (no hardware needed)
 test:
-	gcc -std=gnu11 -Wall -Wextra -DTG_HOST_TEST -o build/host_tests test/test_main.c test/hw_stub.c secure/secure_core.c secure/secure_passage.c
+	$(HOST_CC) -std=gnu11 -Wall -Wextra -DTG_HOST_TEST -o build/host_tests test/test_main.c test/hw_stub.c secure/secure_core.c secure/secure_passage.c
 	./build/host_tests
 
 # Randomised soak test with invariants + sanitizers (seeds 1..8, dense and quiet traffic, 3 M simulated ms each)
 fuzz:
-	gcc -std=gnu11 -O1 -g -fsanitize=address,undefined -fno-sanitize-recover=undefined -DTG_HOST_TEST -o build/fuzz test/fuzz.c test/hw_stub.c secure/secure_core.c secure/secure_passage.c
+	$(HOST_CC) -std=gnu11 -O1 -g -fsanitize=address,undefined -fno-sanitize-recover=undefined -DTG_HOST_TEST -o build/fuzz test/fuzz.c test/hw_stub.c secure/secure_core.c secure/secure_passage.c
 	@for s in 1 2 3 4 5 6 7 8; do ./build/fuzz $$s 3000000 0 || exit 1; ./build/fuzz $$s 3000000 1 || exit 1; done
 
 boundary: all
